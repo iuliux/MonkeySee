@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-    <title>BotRecorder</title>
+    <title>MonkeySee</title>
 <!-- Styling -->
     <style type=text/css>
         body{
@@ -9,6 +9,9 @@
            color:#222;
            margin:1em 0 2em 1em;
            padding:0;
+        }
+        a img {
+            border:0px;
         }
         #gjs-loader {
             width: 200px;
@@ -38,16 +41,25 @@
         <form>
             <p>
                 <label for="filename">Filename</label><br />
-                <input type="text" name="filename" value="main.car" id="filename" />
+                <input type="text" name="filename" value="main.doit" id="filename" />
             </p>
             <p>
                 <label for="data">File Contents</label><br />
                 <textarea cols="60" rows="30" name="data" id="data"></textarea>
             </p>
-            <p id="downloadify">
-                You must have Flash 10 installed to download this file.
-            </p>
-            <a href="#" onclick="clearTextarea();">Reset</a>
+            <div style="float:left;">
+                <p id="downloadify">
+                    You must have Flash 10 installed to download this file.
+                </p>
+                <p>
+                    <a href="#" onclick="clearTextarea();">Reset</a>
+                </p>
+            </div>
+            <div style="float:right; margin-right:10px;">
+                <a href="https://github.com/iuliux/BotRec" title="MonkeySee GitHub project's page">
+                    <img src="images/monkeydo-logo.png" alt="MonkeySee-MonkeyDo" />
+                </a>
+            </div>
         </form>
 
         <script type="text/javascript">

@@ -1,9 +1,12 @@
-BotRec
+BotRec (MonkeySee)
 ======
 
 ## What is it?
 A simple utilitary for visually recording logs which would get played (interpreted) by a robo-car controlled by an `ATmega16` microcontorller.
 This is an academic project. It's written in JavaScript on HTML5's canvas.
+
+## The whole
+This project is the recorder part of a record-play system. It is the MonkeySee part of the MonkeySee - MonkeyDo project developed as an assignment project in the "Design with microprocessors" class at Polytechnic University of Bucharest.
 
 ## Output language:
 BotRec outputs in a format that has to be interpreted by the AVR-C program running on the car-robot's microcontroller.

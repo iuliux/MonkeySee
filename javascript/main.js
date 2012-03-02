@@ -411,6 +411,11 @@ function main(){
     //props.push(new BoxProp({'size':[5, 1], 'position':[center[0], center[1]+2.5]}));
     //props.push(new DynamicBoxProp({'size':[3, 3], 'position':[center[0]+10, center[1]+10]}));
 
+    //walls used for side parking practice
+    props.push(new BoxProp({'size':[11, 5], 'position':[40, 55]}));
+    props.push(new BoxProp({'size':[11, 5], 'position':[60, 55]}));
+    props.push(new BoxProp({'size':[9, 1], 'position':[50, 57]}));
+
     //used to accumulate the output commands
     latest_command = '';
     duration_accumulator = 0;
