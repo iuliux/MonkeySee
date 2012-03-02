@@ -17,7 +17,7 @@
             width: 200px;
             height: 200px;
         }
-        input, textarea { border: solid 1px #aaa; padding: 4px; width: 98%;}
+        input, textarea { border: solid 1px #aaa; padding: 4px; width: 190px;}
     </style>
 <!-- Include Downloadify -->
     <script type="text/javascript" src="javascript/downloadify/swfobject.js"></script>
@@ -37,7 +37,7 @@
         <img id="gjs-loader" src="./images/ajax-loader.gif">
         <canvas id="gjs-canvas"></canvas>
     </div>
-    <div style="float: right; position: relative;">
+    <div style="float: right; position: relative; width: 200px;">
         <form>
             <p>
                 <label for="filename">Filename</label><br />
@@ -45,7 +45,7 @@
             </p>
             <p>
                 <label for="data">File Contents</label><br />
-                <textarea cols="60" rows="30" name="data" id="data"></textarea>
+                <textarea rows="20" name="data" id="data"></textarea>
             </p>
             <div style="float:left;">
                 <p id="downloadify">
@@ -55,7 +55,7 @@
                     <a href="#" onclick="clearTextarea();">Reset</a>
                 </p>
             </div>
-            <div style="float:right; margin-right:10px;">
+            <div style="float:right; margin-right:5px;">
                 <a href="https://github.com/iuliux/BotRec" title="MonkeySee GitHub project's page">
                     <img src="images/monkeydo-logo.png" alt="MonkeySee-MonkeyDo" />
                 </a>

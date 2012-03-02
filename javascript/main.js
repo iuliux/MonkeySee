@@ -12,8 +12,8 @@ var ACC_ACCELERATE=1;
 var ACC_BRAKE=2;
 var ACC_REVERSE=3;
 
-var WIDTH_PX=1000;   //screen width in pixels
-var HEIGHT_PX=700; //screen height in pixels
+var WIDTH_PX= document.documentElement.clientWidth - 250;   //screen width in pixels
+var HEIGHT_PX= document.documentElement.clientHeight - 50; //screen height in pixels
 var SCALE=10;      //how many pixels in a meter
 var WIDTH_M=WIDTH_PX/SCALE; //world width in meters. for this example, world is as large as the screen
 var HEIGHT_M=HEIGHT_PX/SCALE; //world height in meters
