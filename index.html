@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>BotCar Recorder</title>
+<!-- Styling -->
+    <style type=text/css>
+        body{
+           background:#fff;
+           color:#222;
+           margin:1em 0 2em 1em;
+           padding:0;
+        }
+        #gjs-loader {
+            width: 50%;
+            height: 50%;
+        }
+        input, textarea { border: solid 1px #aaa; padding: 4px; width: 98%;}
+    </style>
+<!-- Include Downloadify -->
+    <script type="text/javascript" src="javascript/downloadify/swfobject.js"></script>
+    <script type="text/javascript" src="javascript/downloadify/downloadify.min.js"></script>
+
+<!-- Start javascript/main.js -->
+    <script src="./public/yabble.js"></script>
+    <script src="./public/gamejs-wrapped.js"></script>
+    <script>
+        require.setModuleRoot('./javascript/');
+        require.run('main')
+    </script>
+</head>
+<!-- Html -->
+<body onload="loadDownloadify();">
+    <div style="float: left; position: relative;">
+        <img id="gjs-loader" src="./public/ajax-loader.gif">
+        <canvas id="gjs-canvas"></canvas>
+    </div>
+    <div style="float: right; position: relative;">
+        <form>
+            <p>
+                <label for="filename">Filename</label><br />
+                <input type="text" name="filename" value="main.car" id="filename" />
+            </p>
+            <p>
+                <label for="data">File Contents</label><br />
+                <textarea cols="60" rows="30" name="data" id="data"></textarea>
+            </p>
+            <p id="downloadify">
+                You must have Flash 10 installed to download this file.
+            </p>
+            <a href="#" onclick="clearTextarea();">Reset</a>
+        </form>
+
+        <script type="text/javascript">
+            function loadDownloadify(){
+                Downloadify.create('downloadify',{
+                    filename: function(){
+                        return document.getElementById('filename').value;
+                    },
+                    data: function(){ 
+                        return document.getElementById('data').value;
+                    },
+                    onError: function(){ alert('You must record something or there will be nothing to save!'); },
+                    swf: 'media/downloadify.swf',
+                    downloadImage: 'images/download.png',
+                    width: 100,
+                    height: 30,
+                    transparent: true,
+                    append: false
+                });
+            }
+            function clearTextarea(){
+                var answer = confirm ("The current recording will be erased. Reset?")
+                if (answer)
+                    document.getElementById('data').value='';
+            }
+        </script>
+    </div>
+</body>
+</html>
