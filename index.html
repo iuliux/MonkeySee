@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-    <title>BotCar Recorder</title>
+    <title>BotRecorder</title>
 <!-- Styling -->
     <style type=text/css>
         body{
@@ -11,8 +11,8 @@
            padding:0;
         }
         #gjs-loader {
-            width: 50%;
-            height: 50%;
+            width: 200px;
+            height: 200px;
         }
         input, textarea { border: solid 1px #aaa; padding: 4px; width: 98%;}
     </style>
@@ -21,8 +21,8 @@
     <script type="text/javascript" src="javascript/downloadify/downloadify.min.js"></script>
 
 <!-- Start javascript/main.js -->
-    <script src="./public/yabble.js"></script>
-    <script src="./public/gamejs-wrapped.js"></script>
+    <script src="./javascript/gamejs/yabble.js"></script>
+    <script src="./javascript/gamejs/gamejs-wrapped.js"></script>
     <script>
         require.setModuleRoot('./javascript/');
         require.run('main')
@@ -31,7 +31,7 @@
 <!-- Html -->
 <body onload="loadDownloadify();">
     <div style="float: left; position: relative;">
-        <img id="gjs-loader" src="./public/ajax-loader.gif">
+        <img id="gjs-loader" src="./images/ajax-loader.gif">
         <canvas id="gjs-canvas"></canvas>
     </div>
     <div style="float: right; position: relative;">
