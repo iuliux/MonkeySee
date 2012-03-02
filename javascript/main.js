@@ -411,15 +411,22 @@ function main(){
     //props.push(new BoxProp({'size':[5, 1], 'position':[center[0], center[1]+2.5]}));
     //props.push(new DynamicBoxProp({'size':[3, 3], 'position':[center[0]+10, center[1]+10]}));
 
+    //used to accumulate the output commands
+    latest_command = '';
+    duration_accumulator = 0;
+
     function tick(msDuration) {
         //GAME LOOP
         
         //handle events. Key status (depressed or no) is tracked in via KEYS_DOWN associative array
         gamejs.event.get().forEach(function(event){
             //key press
-            if (event.type === gamejs.event.KEY_DOWN) KEYS_DOWN[event.key] = true;
+            if (event.type === gamejs.event.KEY_DOWN) {
+                KEYS_DOWN[event.key] = true;
+            }
             //key release
-            else if (event.type === gamejs.event.KEY_UP) KEYS_DOWN[event.key] = false;           
+            else if (event.type === gamejs.event.KEY_UP) 
+                KEYS_DOWN[event.key] = false;           
         });
         
         //set car controls according to player input
@@ -489,10 +496,20 @@ function main(){
             display.blit(font.render('REVERSE: '+parseInt(msDuration)), [225, 55]);
         }
 
-        if(any_key == true){
-            command += ') '+msDuration;
-            document.getElementById('data').value += command+'\n';
+        //only output the command if it ended
+        if(command != latest_command && duration_accumulator > 0){
+            if(latest_command != '(' && latest_command != '')
+                document.getElementById('data').value += latest_command+') '+duration_accumulator+'\n';
+            latest_command = command;
+            duration_accumulator = parseInt(msDuration);
         }
+        //if the same command is given, just accumulate it's duration
+        else if(any_key == true){
+            //latest_command = command;
+            duration_accumulator += parseInt(msDuration);
+        }
+
+        //latest_command = command;
         
         //fps and car speed display
         display.blit(font.render('FPS: '+parseInt((1000)/msDuration)), [25, 25]);
