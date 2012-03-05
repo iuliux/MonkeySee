@@ -20,8 +20,14 @@ var HEIGHT_M=HEIGHT_PX/SCALE; //world height in meters
 var KEYS_DOWN={}; //keep track of what keys are held down by the player
 var b2world;
 
-var groundFriction = 0.8;
-var brakingFactor = 1.9;
+
+// Configs ----------------------------------------------------
+var brakingFactor = 0.9;
+
+var carPower = 220;
+var carMaxSteer = 16;
+var carMaxSpeed = 60;
+//-------------------------------------------------------------
 
 //initialize font to draw text with
 var font=new gamejs.font.Font('16px Sans-serif');
@@ -216,7 +222,7 @@ function Car(pars){
     def.type = box2d.b2Body.b2_dynamicBody;
     def.position=new box2d.b2Vec2(pars.position[0], pars.position[1]);
     def.angle=math.radians(pars.angle); 
-    def.linearDamping=0.15;  //gradually reduces velocity, makes the car reduce speed slowly if neither accelerator nor brake is pressed
+    def.linearDamping=1.95;  //gradually reduces velocity, makes the car reduce speed slowly if neither accelerator nor brake is pressed
     def.bullet=true; //dedicates more time to collision detection - car travelling at high speeds at low framerates otherwise might teleport through obstacles.
     def.angularDamping=0.3;
     this.body=b2world.CreateBody(def);
@@ -332,16 +338,9 @@ Car.prototype.update=function(msDuration){
         }
         else if(this.accelerate==ACC_BRAKE){
             //braking, but still moving forwards - increased force
-            if(this.getLocalVelocity()[1]<0) base_vect=[0, brakingFactor];
+            if(this.getLocalVelocity()[1]<-1) base_vect=[0, brakingFactor];
             //braking, but still moving in reverse - increased force
-            else if(this.getLocalVelocity()[1]>0) base_vect=[0, -brakingFactor];
-        }
-        else{
-            //braking from friction
-            //when moving forward
-            if(this.getLocalVelocity()[1]<0) base_vect=[0, groundFriction];
-            //when moving in reverse
-            else if(this.getLocalVelocity()[1]>0) base_vect=[0, -groundFriction];
+            else if(this.getLocalVelocity()[1]>1) base_vect=[0, -brakingFactor];
         }
 
         //multiply by engine power, which gives us a force vector relative to the wheel
@@ -387,9 +386,9 @@ function main(){
                     'length':4,
                     'position':[50, 50],
                     'angle':270, 
-                    'power':60,
-                    'max_steer_angle':20,
-                    'max_speed':60,
+                    'power': carPower,
+                    'max_steer_angle': carMaxSteer,
+                    'max_speed': carMaxSpeed,
                     'wheels':[{'x':-1, 'y':-1.2, 'width':0.4, 'length':0.8, 'revolving':true, 'powered':true}, //top left
                                 {'x':1, 'y':-1.2, 'width':0.4, 'length':0.8, 'revolving':true, 'powered':true}, //top right
                                 {'x':-1, 'y':1.2, 'width':0.4, 'length':0.8, 'revolving':false, 'powered':false}, //back left

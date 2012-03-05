@@ -9,7 +9,7 @@ This is an academic project. It's written in JavaScript on HTML5's canvas.
 This project is the recorder part of a record-play system. It is the MonkeySee part of the MonkeySee - MonkeyDo project developed as an assignment project in the "Design with microprocessors" class at Polytechnic University of Bucharest.
 
 ## Demo
-(http://http://iuliux.ro/monkeysee/)
+[iuliux.ro/monkeysee/](http://iuliux.ro/monkeysee/)
 
 ## Output language:
 BotRec outputs in a format that has to be interpreted by the AVR-C program running on the car-robot's microcontroller.
@@ -27,13 +27,13 @@ An example of the format:
 * `<` - left
 * `>` - right
 * `^` - forward
-* `v` - backward
+* `v` or `V` - backward
 * `-` - brake
 
 Action symbols are put in brackets.
 
 ### A command has two parts:
-* _direction_ _part_ (e.g. `(>v)`) - if two symbols are present, the first one always represents the steering
+* _action_ _part_ (e.g. `(>v)`) - if two symbols are present, the first one always represents the steering
 * _duration_ _part_ - the amount of time the command is active measured in *milliseconds*
 
 ## Using OpenSource tools:
