@@ -8,7 +8,7 @@ A simple utilitary for visually recording logs which would get played (interpret
 This is an academic project. It's written in JavaScript on HTML5's canvas.
 
 ## The whole
-This project is the recorder part of a record-play system. It is the MonkeySee part of the MonkeySee - MonkeyDo project developed as an assignment project in the "Design with microprocessors" class at Polytechnic University of Bucharest.
+This project is the recorder part of a record-play system. It is the MonkeySee part of the MonkeySee - [MonkeyDo](https://github.com/iuliux/MonkeyDo) project developed as an assignment project in the "Design with microprocessors" class at Polytechnic University of Bucharest.
 
 ## Demo
 [iuliux.ro/monkeysee/](http://iuliux.ro/monkeysee/)
