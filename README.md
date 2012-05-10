@@ -1,6 +1,8 @@
 MonkeySee
 ======
 
+![MonkeySee Logo](http://iuliux.ro/monkeysee/images/monkeydo-logo.png)
+
 ## What is it?
 A simple utilitary for visually recording logs which would get played (interpreted) by a robo-car controlled by an `ATmega16` microcontorller.
 This is an academic project. It's written in JavaScript on HTML5's canvas.
