@@ -418,6 +418,7 @@ function main(){
     //used to accumulate the output commands
     latest_command = '';
     duration_accumulator = 0;
+    latest_not_futile = false;
 
     function tick(msDuration) {
         //GAME LOOP
@@ -469,6 +470,7 @@ function main(){
 
         //log commands given to the car
         var any_key = false;
+        var not_futile = false;
         var command = '(';
 
         if(KEYS_DOWN[BINDINGS.steer_right]){
@@ -486,25 +488,29 @@ function main(){
         if(KEYS_DOWN[BINDINGS.accelerate]){
             any_key = true;
             command += '^';
+            not_futile = true;
 
             display.blit(font.render('FORWARD: '+parseInt(msDuration)), [225, 25]);
         }else if(KEYS_DOWN[BINDINGS.brake]){
             any_key = true;
             command += '-';
+            not_futile = true;
 
             display.blit(font.render('BREAK: '+parseInt(msDuration)), [325, 55]);
         }else if(KEYS_DOWN[BINDINGS.reverse]){
             any_key = true;
             command += 'v';
+            not_futile = true;
 
             display.blit(font.render('REVERSE: '+parseInt(msDuration)), [225, 55]);
         }
 
         //only output the command if it ended
         if(command != latest_command && duration_accumulator > 0){
-            if(latest_command != '(' && latest_command != '')
+            if(latest_command != '(' && latest_command != '' && latest_not_futile)
                 document.getElementById('data').value += latest_command+') '+duration_accumulator+'\n';
             latest_command = command;
+            latest_not_futile = not_futile;
             duration_accumulator = parseInt(msDuration);
         }
         //if the same command is given, just accumulate it's duration
