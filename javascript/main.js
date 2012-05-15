@@ -24,9 +24,9 @@ var b2world;
 // Configs ----------------------------------------------------
 var brakingFactor = 0.9;
 
-var carPower = 220;
-var carMaxSteer = 16;
-var carMaxSpeed = 60;
+var carPower = 150;
+var carMaxSteer = 12;
+var carMaxSpeed = 50;
 //-------------------------------------------------------------
 
 //initialize font to draw text with
